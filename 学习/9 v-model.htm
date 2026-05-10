@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #box {
+        margin: 100px auto;
+        margin-left: 40%;
+    }
+</style>
+
+<body>
+    <div id="box">
+        <!-- 
+            v-model 可以让数据和视图,形成双向数据绑定
+            可以快速[获取]或[设置]表单元素的内容
+        -->
+        账号:<input type="text" v-model="username"><br>
+        密码:<input type="password" v-model="password"><br>
+        <button @click="login">提交</button>
+        <button @click="reset">重置</button>
+    </div>
+    <script>
+        const box = new Vue({
+            el: "#box",
+            data: {
+                username: "",
+                password: "",
+            },
+            methods: {
+                login() {
+                    console.log(this.username,this.password)
+                },
+                reset() {
+                    this.username = ''
+                    this.password = ''
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>

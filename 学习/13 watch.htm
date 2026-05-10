@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        textarea,
+        .box div {
+            width: 300px;
+            height: 200px;
+        }
+
+        textarea {
+            border: 0px;
+            border: 1px solid #ccc;
+            outline: 0px;
+            padding: 10px;
+            resize: none;
+        }
+
+        .box i {
+            position: relative;
+            font-size: 12px;
+        }
+
+        .box span {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .box div {
+            background-color: #ccc;
+        }
+
+        .box {
+            margin-top: 10px;
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="head">
+            翻译成的语言:
+            <select name="" id="">
+                <option value="">英语</option>
+                <option value="">德语</option>
+                <option value="">法语</option>
+                <option value="">中文</option>
+            </select>
+        </div>
+        <div class="box">
+            <i><textarea name="" id="" v-model="words"></textarea>
+                <span>⌨️文档翻译</span>
+            </i>
+            <div></div>
+        </div>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                words: "",
+            },
+            // 该方法会在监视数据发生变化时执行
+            // words(newValue,oldValue) 第二参数可以省略
+            // watch:{
+            //     数据属性名 (newValue,oldValue){
+            //         业务 或 异步操作
+            //     },
+            //     '对象.属性名' (newValue,oldValue){
+            //         业务 或 异步操作
+            //     }
+            // },
+            watch: {
+                words(newValue) {
+                    console.log(newValue)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

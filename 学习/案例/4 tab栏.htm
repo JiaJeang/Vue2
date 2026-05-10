@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        ul {
+            display: flex;
+            list-style: none;
+            /* gap: 15px; */
+            border-bottom: 2px solid red;
+            padding-left: 10px;
+        }
+
+        ul li {
+            width: 100px;
+            height: 50px;
+            font-weight: 700;
+            line-height: 50px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,ind) in list" :key="item.id" :class="{active:activeInd==ind}" @click="activeInd=ind">
+                {{item.name}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                activeInd: 0,
+                list: [
+                    { id: 1, name: '京东秒杀' },
+                    { id: 2, name: '每日特价' },
+                    { id: 3, name: '品类秒杀' },
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

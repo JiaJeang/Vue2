@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    #box {
+        margin: 100px auto;
+        background-color: #ccc;
+        width: 200px;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button {
+        height: 30px;
+        margin: 5px;
+        padding: 0 5px;
+    }
+</style>
+
+<body>
+    <div id="box">
+        <div>commodity</div>
+        <div>
+            <!-- <button v-on:click="msg-=2">water:2$</button> -->
+            <button @click="buy(2)">water:2$</button>
+            <button @click="buy(9)">coffee:9$</button>
+        </div>
+        <div>residue:{{msg}}$</div>
+    </div>
+</body>
+<script>
+    const box = new Vue({
+        el: "#box",
+        data: {
+            msg: 100,
+        },
+        methods: {
+            buy(money) {
+                this.msg-=money
+            }
+        }
+    })
+</script>
+
+</html>

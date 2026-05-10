@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <style>
+        input {
+            width: 30px;
+            margin-left: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        总数:{{totalCount}}
+    </div>
+    <div id="box">
+        性:<input v-model="first" type="text">
+        +名:<input v-model="last" type="text">
+        =
+        <span>{{full}}</span>
+        <br>
+        <button @click="changeName">改名</button>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    { id: 1, name: "a", num: 1 },
+                    { id: 2, name: "b", num: 2 },
+                    { id: 3, name: "c", num: 4 },
+                ]
+            },
+            computed: {
+                // 可以直接通过 this 访问到 app 实例
+                totalCount() {
+                    return this.list.reduce((sum, item) => sum + item.num, 0)
+                }
+            }
+        })
+        // 完整写法
+        const box = new Vue({
+            el: '#box',
+            data: {
+                first: "吕",
+                last: "布",
+            },
+            methods: {
+                changeName() {
+                    this.full = "吕小布"
+                }
+            },
+            computed: {
+                full: {
+                    get() {
+                        return this.first + this.last
+                    },
+                    set(full){
+                        this.first=full.slice(0,1)
+                        this.last=full.slice(1)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

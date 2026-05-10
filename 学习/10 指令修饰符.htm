@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <style>
+        .father {
+            padding: 30px;
+            background: #eee;
+            margin: 10px 0;
+        }
+
+        .son {
+            padding: 20px;
+            background: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- 1. v-model 修饰符:.trim 去除首尾空格、.number 自动转数字 -->
+        <h3>v-model 修饰符 .trim .number</h3>
+        姓名(自动去除首尾空格):
+        <input v-model.trim="username" type="text"><br>
+        你输入的姓名:{{ username }}<br>
+        年纪(自动转数字类型):
+        <input v-model.number="age" type="text"><br>
+        年龄类型:{{ typeof age }},值:{{ age }}<br><br>
+
+        <!-- 2. @事件.stop 阻止事件冒泡 -->
+        <h3>@事件.stop &nbsp;→&nbsp; 阻止冒泡</h3>
+        <div @click="fatherFn" class="father">
+            父盒子(点击会触发父事件)
+            <br>
+            <!-- sonFn后面加.stop:点击儿子,不会再冒泡触发父亲的点击 -->
+            <div @click.stop="sonFn" class="son">儿子(加了.stop,点击不冒泡)</div>
+        </div><br>
+
+        <!-- 3. @事件.prevent 阻止浏览器默认行为 -->
+        <h3>@事件.prevent &nbsp;→&nbsp; 阻止默认行为</h3>
+        <!-- a标签默认会跳转百度,加.prevent后点击不会跳转 -->
+        <a @click.prevent href="http://www.baidu.com">阻止默认跳转行为</a><br><br>
+
+        <!-- 4. @keyup.enter 键盘回车触发事件 -->
+        <h3>@keyup.enter &nbsp;→&nbsp; 监听键盘回车事件</h3>
+        输入内容按下回车:<input @keyup.enter="enterFn" v-model="msg">
+        <br>回车提交的内容:{{ msg }}
+    </div>
+
+    <script>
+        // @keyup.enter 键盘回车监听
+        // v-model.trim 去收尾空格
+        // v-model.numder 转数字
+        // @事件.stop 阻止冒泡
+        // @事件.prvent 阻止默认行为
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    username: '',
+                    age: '',
+                    msg: ''
+                }
+            },
+            methods: {
+                fatherFn() {
+                    alert('触发了父盒子点击事件(冒泡上来的)')
+                },
+                sonFn() {
+                    alert('触发了儿子盒子点击事件')
+                },
+                enterFn() {
+                    alert('按下了回车键,提交内容:' + this.msg)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

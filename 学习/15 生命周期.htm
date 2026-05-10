@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>计数器</h2>
+        <button @click="num--">-</button>
+        <span>{{num}}</span>
+        <button @click="num++">+</button>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                num: 100,
+            },
+            // 1.创建阶段
+            beforeCreate() {
+                console.log('beforeCreate 之前')
+            },
+            created() {
+                console.log('created 之后')
+            },
+            // 2.挂载阶段
+            beforeMount() {
+                console.log('beforeMount 模版渲染之前',document.querySelector('span').innerHTML)
+            },
+            mounted() {
+                //可以操作DOM了
+                console.log('beforeMount 模版渲染之后',document.querySelector('span').innerHTML)
+            },
+            // 3.更新阶段
+            beforeUpdate() {
+                console.log('beforeUpdate 数据修改 视图还没更新',this.num)
+            },
+            updated() {
+                console.log('updated 数据修改 视图更新',this.num)
+            },
+            // 4.卸载阶段
+            beforeDestroy() {
+                //可以清除Vue以外的资源占用,定时器,延时器...
+                console.log('beforeDestory 卸载之前')
+            },
+            destroyed() {
+                console.log('destroyed 卸载之后')
+            },
+        })
+    </script>
+</body>
+
+</html>

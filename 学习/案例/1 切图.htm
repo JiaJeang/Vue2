@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #box {
+        margin: 100px auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #box div img {
+        height: 200px;
+        width: 400px;
+    }
+
+    button {
+        height: 25px;
+        width: 80px;
+    }
+
+    .hidden {
+        /* opacity: 0; */
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+</style>
+
+<body>
+    <div id="box">
+        <div><img :src="list[ind]" alt=""></div>
+        <div class="but">
+            <button :class="{ hidden: ind <= 0 }" @click="ind--">up</button>
+            <button :class="{ hidden: ind >= list.length - 1 }" @click="ind++">dn</button>
+        </div>
+    </div>
+    <script>
+        const box = new Vue({
+            el: "#box",
+            data: {
+                ind: 0,
+                list: [
+                    './imgs/1.jpg',
+                    './imgs/2.jpg',
+                    './imgs/3.jpg',
+                    './imgs/4.jpg',
+                    './imgs/5.jpg',
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

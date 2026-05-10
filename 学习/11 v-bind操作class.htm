@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            height: 200px;
+            width: 200px;
+            border: 2px solid #ccc;
+            margin: 10px;
+        }
+        .pink{
+            background-color: pink;
+        }
+        .big{
+            transform: scale(2);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        :class="对象/数组"
+        :class="{类名1:布尔值,类名2:布尔值}"
+        :class="["类名1","类名2"]"
+    -->
+    <div class='box' id="box1" :class="{pink:true,big:false}">对象</div>
+    <div class='box' id="box2" :class="['pink','big']">数组</div>
+    <script>
+        const box1=new Vue({
+            el:"#box1",
+            data:{
+                
+            }
+        })
+        const box2=new Vue({
+            el:"#box2",
+            data:{
+                
+            }
+        })
+    </script>
+</body>
+
+</html>

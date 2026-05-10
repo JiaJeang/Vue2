@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <p v-if="gender===1">man</p>
+        <p v-else>girl</p>
+        <hr>
+        <p v-if="score>=90">A</p>
+        <p v-else-if="score>=80">B</p>
+        <p v-else-if="score>=70">C</p>
+        <p v-else>D</p>
+    </div>
+    <script>
+        const box = new Vue({
+            el: "#box",
+            data: {
+                gender: 1,
+                score: 80,
+            }
+        })
+    </script>
+</body>
+
+</html>

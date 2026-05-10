@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid #ccc;
+            border-spacing: 0px;
+        }
+
+        th {
+            background-color: #ababab;
+        }
+
+        table {
+            width: 647px;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        th,
+        td {
+            width: 100px;
+            padding: 5px;
+        }
+
+        tfoot span {
+            margin: 0px 50px;
+        }
+
+        #app {
+            margin: 100px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .add span {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .add input {
+            margin: 5px;
+            border: 0px;
+            border: 1px solid #ccc;
+            outline: 0px;
+            height: 20px;
+            width: 90px;
+            padding-left: 3px;
+        }
+
+        .add button {
+            border: 0px;
+            background-color: rgb(15, 77, 209);
+            border-radius: 3px;
+            color: #fff;
+        }
+
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2>成绩表</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>科目</th>
+                    <th>成绩</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody v-if="list.length!=0">
+                <tr v-for="(item,ind) in list" :key="item.id">
+                    <td>{{ind+1}}</td>
+                    <td>{{item.course}}</td>
+                    <td :class="{active:item.score<60}">{{item.score}}</td>
+                    <td><a href="#" @click.prevent="del(item.id)">删除</a></td>
+                </tr>
+            </tbody>
+            <tbody v-else>
+                <tr>
+                    <td colspan="4">暂无数据</td>
+                </tr>
+            </tbody>
+            <tfoot v-if="list.length!=0">
+                <tr>
+                    <td colspan="4" style="height:67px;">
+                        <span>总分:{{sum}}</span>
+                        <span>平均分:{{avg}}</span>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="add">
+            <span>
+                科目:<input placeholder="输入科目名称" v-model.trim="course" type="text" name="" id="">
+                分数:<input placeholder="输入科目成绩" v-model.number="score" type="text" name="" id="">
+                <button @click="add">添加</button>
+            </span>
+        </div>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                list: [
+                    { id: 1, course: "语文", score: 20 },
+                    { id: 2, course: "数学", score: 60 },
+                    { id: 3, course: "英语", score: 60 },
+                ],
+                course: "",
+                score: "",
+            },
+            methods: {
+                del(id) {
+                    this.list = this.list.filter(item => item.id !== id)
+                },
+                add() {
+                    if (!this.course.trim()) {
+                        alert("输入科目名称")
+                        return
+                    }
+                    const score = Number(this.score)
+                    if (!isNaN(Number)) {
+                        alert("输入有效成绩")
+                        this.score = ""
+                        return
+                    }
+                    this.list.push({
+                        id: new Date(),
+                        course: this.course,
+                        score: score
+                    })
+                    this.score = ""
+                    this.course = ""
+                }
+            },
+            computed: {
+                sum() {
+                    let sum = 0
+                    for (item of this.list) sum += item.score
+                    return sum
+                },
+                avg() {
+                    let ret = this.sum / this.list.length
+                    return ret.toFixed(2)
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

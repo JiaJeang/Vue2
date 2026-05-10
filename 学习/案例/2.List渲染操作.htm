@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>书籍列表</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #app{
+            margin: 100px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 300px;
+            margin: 50px auto;
+        }
+
+        li {
+            padding: 10px;
+            border: 1px solid #eee;
+            margin-bottom: 8px;
+            border-radius: 4px;
+        }
+
+        button {
+            float: right;
+            width: 50px;
+            /* color: red; */
+        }
+
+        li span {
+            float: right;
+            margin-right: 40px;
+            color: #666;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2 style="text-align: center;">四大名著</h2>
+        <ul>
+            <!-- key属性 = "唯一标识" -->
+            <!-- 给列表项添加的唯一标识 便于Vue进行列表项的真确排序复用 -->
+            <li v-for="book in bookslist" :key="book.id">
+                <i>{{ book.name }} </i>
+                <button @click="del(book.id)">删除</button>
+                <span>作者:{{ book.author }}</span>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                bookslist: [
+                    { id: 1, name: '<红楼梦>', author: '曹雪芹' },
+                    { id: 2, name: '<西游记>', author: '吴承恩' },
+                    { id: 3, name: '<水浒传>', author: '施耐庵' },
+                    { id: 4, name: '<三国演义>', author: '罗贯中' },
+                ]
+            },
+            methods: {
+                del(id) {
+                    // 通过id进行删除数组中的对应向 -> filter
+                    // filter: 根据条件,保留条件满足的对应项 ,得到一个新数组
+                    this.bookslist = this.bookslist.filter(item => item.id !== id)
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>

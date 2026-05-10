@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记事本</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    #box {
+        width: 350px;
+        margin: 100px auto;
+        background-color: #ccc;
+        padding: 15px;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .inp {
+        border: 2px solid #000;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        width: 220px;
+    }
+
+    .inp input {
+        height: 35px;
+        flex: 1;
+        border: 0px;
+        outline: none;
+        padding-left: 10px;
+        color: orange;
+    }
+
+    .inp button {
+        height: 35px;
+        width: 50px;
+        border: 0px;
+        cursor: pointer;
+    }
+
+    .inp button:hover {
+        background-color: orange;
+    }
+
+    ul {
+        list-style: none;
+        width: 220px;
+    }
+
+    li {
+        margin-top: 10px;
+        height: 30px;
+        line-height: 30px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #777;
+    }
+
+    li button {
+        border: none;
+        width: 20px;
+        background-color: #ccc;
+        cursor: pointer;
+        color: red;
+        border-radius: 3px;
+    }
+
+    li button:hover {
+        background-color: red;
+        color: #fff;
+    }
+
+    .bot {
+        width: 220px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 17px;
+        margin-top: 10px;
+    }
+
+    .bot button {
+        border: none;
+        background-color: #ccc;
+    }
+</style>
+
+<body>
+    <div id="box">
+        <h2>记事本</h2>
+        <div class="inp">
+            <input type="text" v-model="event" @keydown.enter="add()" placeholder="请输入待办事项">
+            <button @click="add()">添加</button>
+        </div>
+        <ul>
+            <li v-for="(item,ind) in list" :key="item.id">
+                <i>{{ind+1}}.</i>
+                <span>{{item.event}}</span>
+                <button @click="del(item.id)">×</button>
+            </li>
+        </ul>
+        <div class="bot" v-show="list.length">
+            <i>合计:{{list.length}}</i>
+            <button @click="delAll"><b>清除任务</b></button>
+        </div>
+    </div>
+    <script>
+        const box = new Vue({
+            el: '#box',
+            data: {
+                list: [
+                    { id: 1, event: "run" },
+                    { id: 2, event: "read" },
+                    { id: 3, event: "eat" },
+                    { id: 4, event: "sleep" },
+                ],
+                event: ''
+            },
+            methods: {
+                del(id) {
+                    this.list = this.list.filter(item => item.id !== id)
+                },
+                add() {
+                    if (!this.event.trim()) {
+                        alert('请输入待办事项!')
+                        return
+                    }
+                    const ind = +new Date()
+                    this.list.push({
+                        id: ind,
+                        event: this.event
+                    })
+                    this.event = ''
+                },
+                delAll() {
+                    if (confirm("确定全部删除吗?")) {
+                        this.list = [];
+                        this.ind = 0;
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

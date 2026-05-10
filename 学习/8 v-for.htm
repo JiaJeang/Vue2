@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <!-- v-for 基于数据循环,多次渲染整个元素 -->
+            <li v-for="(item,ind) in list">{{item}}</li>
+            <br>
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        const box = new Vue({
+            el: "#box",
+            data: {
+                list: ['apple', 'banana', 'pear',]
+            }
+        })
+    </script>
+</body>
+
+</html>
