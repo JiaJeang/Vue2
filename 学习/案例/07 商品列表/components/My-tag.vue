@@ -3,16 +3,21 @@
     <input
       v-if="inpShow"
       type="text"
-      value=""
+      :value="value"
       v-focus
       @blur="inpShow = false"
+      @keydown.enter="changeInp"
+      ref="inp"
     />
-    <span v-else style="cursor: pointer" @dblclick="pushInp">xxxx</span>
+    <span v-else style="cursor: pointer" @dblclick="pushInp">{{ value }}</span>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    value: String,
+  },
   data() {
     return {
       inpShow: false,
@@ -26,8 +31,19 @@ export default {
         // this.$nextTick(() => {
         //   this.$refs.inp.focus();
         // });
-        this.def=this.inp
+        this.def = this.inp;
       }, 500);
+    },
+    changeInp(e) {
+      if (e.target.value.trim() === "") {
+        // alert("输入为空!");Í
+        return;
+      }
+      console.log("数据更改成功");
+      // this.$emit("input", this.$refs.inp.value);
+      //通过事件对象获取value
+      this.$emit("input", e.target.value);
+      this.inpShow = false;
     },
   },
 };
