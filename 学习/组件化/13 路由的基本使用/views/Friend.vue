@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>发现音乐</p>
+    <p>我的朋友</p>
   </div>
 </template>
 
