@@ -16,6 +16,7 @@
 <script>
 export default {
   props: {
+    // v-model 要用 value 接收
     value: String,
   },
   data() {
@@ -36,12 +37,12 @@ export default {
     },
     changeInp(e) {
       if (e.target.value.trim() === "") {
-        // alert("输入为空!");Í
+        // alert("输入为空!");
         return;
       }
       console.log("数据更改成功");
       // this.$emit("input", this.$refs.inp.value);
-      //通过事件对象获取value
+      // 通过事件对象获取value 通过input回传
       this.$emit("input", e.target.value);
       this.inpShow = false;
     },

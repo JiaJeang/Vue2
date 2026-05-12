@@ -1,35 +1,51 @@
 <template>
   <div id="app">
-    <table>
-      <thead>
-        <tr>
-          <th>编号</th>
-          <th>商品</th>
-          <th>名称</th>
-          <th>备注</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="item in list" :key="item.id">
-          <td>{{ item.id }}</td>
-          <td>
-            <img :src="item.src" :title="item.name" />
-          </td>
-          <td style="font-size: 12px;">{{item.name}}</td>
-          <td>
-            <MyTag v-model="item.log"></MyTag>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <MyTab :list="list">
+      <template #head>
+        <th>编号</th>
+        <th>商品</th>
+        <th>名称</th>
+        <th>备注</th>
+      </template>
+      <template #main="{ item }">
+        <td>{{ item.id }}</td>
+        <td>
+          <img :src="item.src" :title="item.name" />
+        </td>
+        <td style="font-size: 12px">{{ item.name }}</td>
+        <td>
+          <MyTag v-model="item.log"></MyTag>
+        </td>
+      </template>
+    </MyTab>
+    <MyTab :list="list">
+      <template #head>
+        <th>编号</th>
+        <th>名称</th>
+        <th>商品</th>
+        <th>备注</th>
+      </template>
+      <template #main="{ item }">
+        <td>{{ item.id }}</td>
+        <td style="font-size: 12px">{{ item.name }}</td>
+        <td>
+          <img :src="item.src" :title="item.name" />
+        </td>
+        <td>
+          <MyTag v-model="item.log"></MyTag>
+        </td>
+      </template>
+    </MyTab>
   </div>
 </template>
 
 <script>
 import MyTag from "./components/My-tag.vue";
+import MyTab from "./components/My-Tab.vue";
 export default {
   components: {
     MyTag,
+    MyTab,
   },
   data() {
     return {
@@ -39,7 +55,7 @@ export default {
           id: 101,
           src: "https://img11.360buyimg.com/jdcms/s240x240_jfs/t1/400538/34/14533/62777/69ae68ecFfe01dfbe/008332032015fe60.jpg.avif",
           name: "中国黄金(CHINA GOLD)阴山翠玉髓手镯女和田玉镯子",
-          log: "镯子",
+          log: "手镯",
         },
         {
           id: 102,
@@ -64,33 +80,5 @@ export default {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-table {
-  margin: 50px auto;
-  width: 80%;
-  border-collapse: collapse;
-  //tr变化时不影响表格整体
-  table-layout: fixed;
-}
-th,
-td {
-  height: 35px;
-  padding: 5px;
-  text-align: center;
-  overflow: hidden;
-  img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto;
-  }
-}
-th {
-  background-color: #f7f7f7;
-  border-bottom: 2px solid #006bd2;
-}
-td {
-  border-bottom: 1px solid #ccc;
 }
 </style>
