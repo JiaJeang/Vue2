@@ -3,6 +3,11 @@ import App from './App.vue'
 import store from '@/store/index'
 Vue.config.productionTip = false
 
+Vue.directive('focus', {
+  inserted (el) {
+    el.focus()
+  }
+})
 new Vue({
   store,
   render: h => h(App)
