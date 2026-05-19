@@ -1,14 +1,18 @@
     <template>
+  <div>
+    <h1>son2-{{ $store.state.title }}-{{ $store.state.count }}</h1>
+    <button @click="add(1)">+1</button>
+    <button @click="add(5)">+5</button>
+    <button @click="reset(100)">一秒后重置count为100</button>
+    <div>{{ $store.state.list }}</div>
+    <div>{{ $store.getters.filterList }}</div>
     <div>
-        <h1>son2-{{ $store.state.title }}-{{ $store.state.count }}</h1>
-        <button @click="add(1)">+1</button>
-        <button @click="add(5)">+5</button>
-        <button @click="reset(100)">一秒后重置count为100</button>
-        <hr>
-        <div>{{ $store.state.list }}</div>
-        <div>{{ $store.getters.filterList }}</div>
+      <!-- 使用模块内容 -->
+      {{ $store.state.user.userInfo.name }}
+      {{ $store.state.user.userInfo.age }}
     </div>
-    </template>
+  </div>
+</template>
 
 <script>
 export default {
@@ -28,4 +32,4 @@ export default {
 </script>
 
     <style>
-    </style>
+</style>

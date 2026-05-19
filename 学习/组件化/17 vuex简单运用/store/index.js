@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+// 导入模块
+import user from '@/modules/user'
 
 Vue.use(Vuex)
 
@@ -44,6 +46,10 @@ const store = new Vuex.Store({
     filterList (state) {
       return state.list.filter(item => item > 5)
     }
+  },
+  // 5. 引入模块
+  modules: {
+    user
   }
 })
 

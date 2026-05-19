@@ -4,6 +4,7 @@
     <button v-if='show' @click="show=false">改标题</button>
     <input v-else @input="changeT($event.target.value)" :value="title" @blur="show=true" v-focus type="text">
     <Son1></Son1>
+    <br><hr>
     <Son2></Son2>
   </div>
 </template>
