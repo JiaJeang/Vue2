@@ -1,0 +1,7 @@
+state        存数据
+getters      计算数据
+mutations    改数据(同步)
+actions      发请求/逻辑(异步 axios)
+
+computed     拿 state/getters
+methods      调用 actions/mutations

@@ -1,0 +1,61 @@
+{
+  "cart": [
+    {
+      "id": "100001",
+      "name": "低帮城市休闲户外鞋天然牛皮COOLMAX纤维",
+      "price": 128,
+      "count": 1,
+      "thumb": "https://yanxuan-item.nosdn.127.net/3a56a913e687dc2279473e325ea770a9.jpg"
+    },
+    {
+      "id": "100002",
+      "name": "网易味央黑猪猪肘330g*1袋",
+      "price": 39,
+      "count": 1,
+      "thumb": "https://yanxuan-item.nosdn.127.net/d0a56474a8443cf6abd5afc539aa2476.jpg"
+    },
+    {
+      "id": "100003",
+      "name": "KENROLL男女简洁多彩一片式室外拖",
+      "price": 128,
+      "count": 1,
+      "thumb": "https://yanxuan-item.nosdn.127.net/eb1556fcc59e2fd98d9b0bc201dd4409.jpg"
+    },
+    {
+      "id": "100004",
+      "name": "云音乐定制IN系列intar民谣木吉他",
+      "price": 589,
+      "count": 3,
+      "thumb": "https://yanxuan-item.nosdn.127.net/4d825431a3587edb63cb165166f8fc76.jpg"
+    },
+    {
+      "id": "100017",
+      "name": "304不锈钢保温杯 500ml",
+      "price": 59,
+      "count": 3,
+      "thumb": "https://img30.360buyimg.com/n7/jfs/t20260821/330235/37/1603/389865/68a60969F849b9c58/bca199e8b285ce6d.png"
+    },
+    {
+      "id": "100018",
+      "name": "网易智造 氮化镓65W充电器",
+      "price": 129,
+      "count": 1,
+      "thumb": "https://img10.360buyimg.com/pcpubliccms/s1440x1440_jfs/t1/383973/14/17058/23335/695c8762F878a0ee2/40079956cd37eda2.png.avif"
+    },
+    {
+      "id": "100019",
+      "name": "日式雪平锅 不锈钢18cm",
+      "price": 79,
+      "count": 2,
+      "thumb": "https://img10.360buyimg.com/pcpubliccms/s1440x1440_jfs/t1/405890/14/7125/685800/69bbc687F1fae6350/093532032075d11a.png.avif"
+    },
+    {
+      "id": "100020",
+      "name": "网易严选 乳胶枕 一对装",
+      "price": 189,
+      "count": 1,
+      "thumb": "https://img10.360buyimg.com/pcpubliccms/s1440x1440_jfs/t1/396725/39/12906/144438/69a320d7Ffafb5c22/00835dc5dc2c5d8a.png.avif"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
